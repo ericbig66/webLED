@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+:fullScreen{}
+</style>
+</head>
+<body id="myDIV" width = '200%'>
+
+
+<div id="controls">
+<button onclick="gofullscreen()">Full screen</button>
+<input oninput="colorPick()" type="color" name="colorPicker" id="colorPicker" value="#f0f0f0">
+</div>
+<script>
+var elem = document.documentElement;
+var scrstat = 0;
+function gofullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  }
+}
+function colorPick(){
+	var colorInput = document.getElementById("colorPicker").value;
+ 	document.getElementById("myDIV").style.backgroundColor = colorInput;
+}
+
+var output = document.getElementById("myP");
+document.addEventListener("fullscreenchange", function() {
+  if(scrstat == 1){
+  	scrstat = 0;
+  	document.getElementById("controls").style.display = "block";
+  }
+  else{
+  	scrstat = 1;
+  	document.getElementById("controls").style.display = "none";
+  }
+});
+</script>
+
+</body>
+</html>
